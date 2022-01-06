@@ -10,24 +10,23 @@ public class BankTest extends ObjInitialize {
 
 		String url = "https://usdemo.vee24.com/#/transactions";
 
-		CommonUI commonUIObj = new CommonUI();
-		ObjInitialize obj = new ObjInitialize();
-		BankTest testObj = new BankTest();
 		
 
-		commonUIObj.openBrowser("chrome");
-		commonUIObj.navigate(url);
+		CommonUI.openBrowser("chrome");
+		CommonUI.navigate(url);
 
-		obj.initializeClassObj();
-		testObj.TestCaseOne();
-		testObj.TestCaseTwo();
+		initializeClassObj();
+	     TestCaseOne();
+		 TestCaseTwo();
 
-		commonUIObj.quitBrowser();
+		CommonUI.quitBrowser();
 	}
 
-	public void TestCaseOne() {
 
-		transferObj.originalAccount();
+	public static void TestCaseOne() {
+		
+        homeObj.clickTransfer();
+        transferObj.originalAccount();
 		transferObj.clickRainy();
 		transferObj.destinAcct();
 		transferObj.clickInvest();
@@ -35,18 +34,19 @@ public class BankTest extends ObjInitialize {
 		transferObj.enterSocial("123435677");
 		transferObj.enterPin("1234");
 		transferObj.clickTransferFund();
+		System.out.println(transferObj.displayMessage());
+
 
 	}
 
-	public void TestCaseTwo() {
+	public static void TestCaseTwo() {
 		
-		String url = "https://usdemo.vee24.com/#/loans";
 		
-		driver.get(url);
-		
+		homeObj.clickLoan();
 		loansObj.enterName("John, Cena");
 		loansObj.enterAddress("1234 Cena, Reston, 20155");
-		loansObj.enterLoan();
+		loansObj.clickLoan();
+		loansObj.chooseRetire();
 		loansObj.enterYearRepay("2");
 		loansObj.clickNext();
 		loansObj.enterLoanAmount("5000");
@@ -54,6 +54,7 @@ public class BankTest extends ObjInitialize {
 		loansObj.enterSocialSecurity("123456778");
 		loansObj.clickNext();
 		loansObj.clickConfirm();
+		System.out.println(loansObj.displayMessage());
 		
 	}
 	

@@ -8,13 +8,16 @@ import com.noorteck.qa.utils.CommonUI;
 
 public class HomePage extends CommonUI {
 	
-	@FindBy(xpath = "//span[contains(text(),'Transfer')]")
+	@FindBy(xpath = "//span[text()='Transfer Money']")
 	WebElement transferClick;
 	
-	@FindBy(xpath = "//span[contains(text(),'Loans')]")
-	WebElement loansClick;
+	//@FindBy(xpath = "//a[text()='Loans']")
+	//WebElement loansClick;
 	
-	@FindBy(xpath = "//span[contains(text(),'LogOut')]")
+	@FindBy(xpath = "/html[1]/body[1]/app-root[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/mat-toolbar[1]/div[3]/ul[1]/li[4]/a[1]/span[1]")
+	WebElement loanPage;
+	
+	@FindBy(xpath = "//span[@class='label']")
 	WebElement logOutClick;
 	
 	public HomePage() {
@@ -25,10 +28,12 @@ public class HomePage extends CommonUI {
 		click(transferClick);
 	}
 	
-	public void clickLoans() {
-		click(loansClick);
+	//public void clickLoans() {
+		//click(loansClick);
+	//}
+	public void clickLoan() {
+		click(loanPage);
 	}
-	
 	public void logoutClick() {
 		click(logOutClick);
 	}

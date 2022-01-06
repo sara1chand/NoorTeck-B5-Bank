@@ -14,10 +14,10 @@ public class LoansPage extends CommonUI {
 	@FindBy(xpath = "//input[@placeholder='Street, City, Zip Code']")
 	WebElement addressField;
 
-	@FindBy(css = ".mat-select-placeholder.ng-tns-c10-12.ng-star-inserted")
+	@FindBy(xpath = "/html[1]/body[1]/app-root[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-loans[1]/div[1]/div[2]/mat-horizontal-stepper[1]/div[2]/div[1]/form[1]/mat-form-field[3]/div[1]/div[1]/div[1]/mat-select[1]/div[1]/div[1]/span[1]")
 	WebElement loanType;
 
-	@FindBy(xpath = "//span[text()='Retirement']")
+	@FindBy(xpath = "//span[contains(text(),'Retirement')]")
 	WebElement clickRetire;
 
 	@FindBy(xpath = "//input[starts-with(@placeholder,'Ex. 1')]")
@@ -46,6 +46,9 @@ public class LoansPage extends CommonUI {
 
 	@FindBy(xpath = "//span[text()='Back']")
 	WebElement backButton1;
+	
+	@FindBy(css = ".mat-card-title")
+	WebElement submitSuccess;
 
 	public LoansPage() {
 		PageFactory.initElements(driver, this);
@@ -60,8 +63,12 @@ public class LoansPage extends CommonUI {
 		enter(addressField, addressfield);
 	}
 
-	public void enterLoan() {
-		click(clickRetire);
+	public void clickLoan() {
+		click(loanType);
+	}
+	
+	public void chooseRetire() {
+		moveToElementAndClick(clickRetire);
 	}
 
 	public void enterYearRepay(String repay) {
@@ -99,5 +106,8 @@ public class LoansPage extends CommonUI {
 	public void clickbackButton1() {
 		click(backButton1);
 	}
-
+	
+	public boolean displayMessage() {
+		return isDisplayed(submitSuccess);
+	}
 }

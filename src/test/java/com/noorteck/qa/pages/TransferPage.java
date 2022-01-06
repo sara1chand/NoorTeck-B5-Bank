@@ -8,16 +8,16 @@ import com.noorteck.qa.utils.CommonUI;
 
 public class TransferPage extends CommonUI {
 	
-	@FindBy(css = ".mat-select-placeholder.ng-tns-c10-2.ng-star-inserted")
+	@FindBy(xpath = "/html[1]/body[1]/app-root[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-transfers[1]/div[1]/div[1]/div[1]/div[1]/mat-card[1]/mat-card-content[1]/form[1]/mat-form-field[1]/div[1]/div[1]/div[1]/mat-select[1]/div[1]/div[1]/span[1]")
 	WebElement originalAcct;
 	
-	@FindBy(css = "//span[text()='Rainy Day']")
-	WebElement clickRainyDay;
+	@FindBy(xpath = "//span[contains(text(),'Rainy Day')]")
+	WebElement moveToRainyDay;//hower
 	
-	@FindBy(css = "span.mat-select-placeholder.ng-tns-c10-4.ng-star-inserted")
+	@FindBy(xpath = "/html[1]/body[1]/app-root[1]/mat-sidenav-container[1]/mat-sidenav-content[1]/main[1]/app-transfers[1]/div[1]/div[1]/div[1]/div[1]/mat-card[1]/mat-card-content[1]/form[1]/mat-form-field[2]/div[1]/div[1]/div[1]/mat-select[1]/div[1]/div[1]/span[1]")
 	WebElement destinationAcct;
 	
-	@FindBy(css = "//span[text()='Investing']")
+	@FindBy(xpath = "//span[contains(text(),'Investing')]")
 	WebElement clickInvesting;
 	
 	@FindBy(xpath = "//input[@id='mat-input-0']")
@@ -32,6 +32,9 @@ public class TransferPage extends CommonUI {
 	@FindBy(css = ".v24DomSyncDenyAgent.mat-raised-button.mat-primary")
 	WebElement transferFund;
 	
+	@FindBy(css = ".mat-card-title")
+	WebElement transferSuccess;
+	
 	public TransferPage() {
 		PageFactory.initElements(driver, this);
 	}
@@ -39,16 +42,15 @@ public class TransferPage extends CommonUI {
 	public void originalAccount() {
 		click(originalAcct);
 	}
-	
 	public void clickRainy() {
-		click(clickRainyDay);
+		moveToElementAndClick(moveToRainyDay);
 	}
 	public void destinAcct() {
 		click(destinationAcct);
 	}
 	
 	public void clickInvest() {
-		click(clickInvesting);
+		moveToElementAndClick(clickInvesting);
 	}
 	
 	public void enterAmountField(String amount) {
@@ -65,6 +67,10 @@ public class TransferPage extends CommonUI {
 	
 	public void clickTransferFund() {
 		click(transferFund);
+	}
+	
+	public boolean displayMessage() {
+		return isDisplayed(transferSuccess);
 	}
 	
 	
